@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="de" data-theme="nacht">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt und Anfahrt | Autohaus Pezzei Oberhausen</title>
+  <meta name="description" content="Termin anfragen beim Autohaus Pezzei: Telefon 0208 21100, WhatsApp, Formular. Im Lipperfeld 3a, 46047 Oberhausen. Öffnungszeiten und Anfahrt.">
+  <meta name="theme-color" content="#A82828">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23A82828'/%3E%3Cpath d='M8 22 12 10h8l-4 12z' fill='white'/%3E%3C/svg%3E">
+  <script>(function(){var t=(location.search.match(/[?&]theme=(rot|nacht)/)||[])[1];try{t=t||localStorage.getItem('pezzei-theme');}catch(e){}if(t==='rot'||t==='nacht'){document.documentElement.setAttribute('data-theme',t);}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1"/></symbol>
+  <symbol id="i-tire" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v7M12 15v7M2 12h7M15 12h7"/></symbol>
+  <symbol id="i-spray" viewBox="0 0 24 24"><path d="M3 3h.01M7 5h.01M11 7h.01M3 7h.01M7 9h.01M3 11h.01"/><path d="M15 5V2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3"/><rect x="14" y="5" width="6" height="4"/><path d="M19 9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-glass" viewBox="0 0 24 24"><path d="M3 8l2-4h14l2 4-2 10H5z"/><path d="m8 11 2 4M13 11l1 2"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/><circle cx="7.5" cy="15.5" r="5.5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M4 10h12M4 14h9"/><path d="M19 6a7 7 0 0 0-10 0c-2.7 2.7-2.7 9.3 0 12a7 7 0 0 0 10 0"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+</svg>
+<div class="topbar">
+  <div class="container">
+    <div class="topbar__left">
+      <span><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Im Lipperfeld 3a · 46047 Oberhausen</span>
+      <span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg> Mo–Fr 8:00–17:30 · Sa 9:00–13:00</span>
+    </div>
+    <div class="topbar__right">
+      <div class="theme-switch" role="group" aria-label="Farbwelt wählen">
+        <span>Farbwelt</span>
+        <button type="button" data-theme-set="nacht" aria-pressed="true">A Nacht</button>
+        <button type="button" data-theme-set="rot" aria-pressed="false">B Rot</button>
+      </div>
+      <a href="tel:+4920821100"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> 0208 21 100</a>
+    </div>
+  </div>
+</div>
+<header class="nav">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="Autohaus Pezzei – Startseite"><img src="assets/logo.png" alt="Autohaus Pezzei" width="424" height="91"></a>
+    <nav class="nav__links" aria-label="Hauptnavigation"><a href="index.html">Start</a><a href="leistungen.html">Leistungen</a><a href="fahrzeuge.html">Fahrzeuge</a><a href="kontakt.html" aria-current="page">Kontakt</a></nav>
+    <div class="nav__actions">
+      <a class="icon-btn icon-btn--wa" href="https://wa.me/4920821100" target="_blank" rel="noopener" aria-label="WhatsApp schreiben"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+      <a class="btn btn--primary btn--sm" href="kontakt.html#termin">Termin anfragen</a>
+      <button class="icon-btn nav__burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menü öffnen">
+        <span class="i-open"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></span><span class="i-close" style="display:none"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Start</a><a href="leistungen.html">Leistungen</a><a href="fahrzeuge.html">Fahrzeuge</a><a href="kontakt.html" aria-current="page">Kontakt</a>
+  <div class="btn-row">
+    <a class="btn btn--primary" href="kontakt.html#termin">Termin anfragen</a>
+    <a class="btn btn--whatsapp" href="https://wa.me/4920821100" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp</a>
+  </div>
+</div>
+<main id="main">
+
+<section class="page-head">
+  <div class="page-head__media"><img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=2000&q=70" alt="" width="2000" height="1333"></div>
+  <div class="container">
+    <p class="eyebrow">Kontakt</p>
+    <h1>Termin anfragen</h1>
+    <p class="lead">Am schnellsten geht es per Telefon oder WhatsApp. Oder Sie schicken uns das Formular, wir melden uns in der Regel noch am selben Werktag.</p>
+    <div class="btn-row" style="margin-top:28px">
+      <a class="btn btn--whatsapp" href="https://wa.me/4920821100" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp</a>
+      <a class="btn btn--primary" href="tel:+4920821100"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> 0208 21 100</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="termin">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <!-- Demo-Formular: ohne Server. Für den Live-Betrieb action/method setzen oder einen Formulardienst anbinden. -->
+        <form class="form" id="termin-form" novalidate>
+          <h2 style="font-size:2rem">Anfrage senden</h2>
+          <div class="form__row">
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="f-phone">Telefon</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required></div>
+          </div>
+          <div class="form__row">
+            <div class="field"><label for="f-mail">E-Mail <small>(optional)</small></label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
+            <div class="field"><label for="f-car">Fahrzeug <small>(z. B. Citroën C3, 2019)</small></label><input id="f-car" name="car" type="text"></div>
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for="f-topic">Anliegen</label>
+              <select id="f-topic" name="topic" required>
+                <option value="">Bitte wählen</option>
+                <option>Inspektion / Wartung</option>
+                <option>HU / AU</option>
+                <option>Klimaservice</option>
+                <option>Reifenservice</option>
+                <option>Karosserie / Lack</option>
+                <option>Autoglas</option>
+                <option>Fahrzeug kaufen / Probefahrt</option>
+                <option>Fahrzeug verkaufen / Bewertung</option>
+                <option>Sonstiges</option>
+              </select>
+            </div>
+            <div class="field"><label for="f-date">Wunschtermin <small>(optional)</small></label><input id="f-date" name="date" type="date"></div>
+          </div>
+          <div class="field"><label for="f-msg">Nachricht</label><textarea id="f-msg" name="message" placeholder="Was sollen wir uns ansehen? Gibt es Geräusche, Warnleuchten, Schäden?"></textarea></div>
+          <label class="check"><input type="checkbox" name="ersatzwagen"> <span>Ich brauche für die Reparaturzeit einen Ersatzwagen.</span></label>
+          <label class="check"><input type="checkbox" name="privacy" required> <span>Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen. Meine Angaben werden nur zur Bearbeitung der Anfrage verwendet.</span></label>
+          <div class="form__foot">
+            <button class="btn btn--primary" type="submit">Anfrage senden <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <small>Kostenlos und unverbindlich.</small>
+          </div>
+        </form>
+        <div class="form-success" id="form-success" role="status" aria-live="polite">
+          <h3>Danke<span data-name></span>, Ihre Anfrage ist angekommen.</h3>
+          <p>Wir melden uns in der Regel noch am selben Werktag mit einem Terminvorschlag. Eilig? Rufen Sie uns an: <a href="tel:+4920821100">0208 21 100</a>.</p>
+        </div>
+      </div>
+      <div class="location__info">
+        <div class="info-card">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Direkt erreichen</h3>
+          <p><a href="tel:+4920821100">0208 21 100</a><br><a href="https://wa.me/4920821100" target="_blank" rel="noopener">WhatsApp: 0208 21 100</a><br><a href="mailto:info@auto-pezzei.de">info@auto-pezzei.de</a></p>
+        </div>
+        <div class="info-card">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg> Öffnungszeiten</h3>
+          <div class="hours">
+            <div><span>Montag – Freitag</span><span>8:00 – 17:30 Uhr</span></div>
+            <div><span>Samstag</span><span>9:00 – 13:00 Uhr</span></div>
+            <div><span>Sonntag</span><span>geschlossen</span></div>
+          </div>
+          <p class="muted" style="margin-top:12px;font-size:.92rem">Fahrzeugannahme ab 7:30 Uhr nach Absprache.</p>
+        </div>
+        <div class="info-card">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg> Gut zu wissen</h3>
+          <ul class="checks" style="margin-top:0">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span>Ersatzwagen bitte bei der Anfrage angeben</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span>Hol- und Bringservice im Stadtgebiet</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span>Kundenparkplätze direkt am Haus</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--light" id="standort">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Standort</p>
+      <h2>Anfahrt</h2><p class="lead">Im Lipperfeld, Gewerbegebiet am Technologiezentrum, wenige Minuten vom Centro. Über die A42, Abfahrt Oberhausen-Zentrum.</p>
+    </div>
+    <div class="location">
+      <div class="location__info">
+        <div class="info-card">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Adresse</h3>
+          <p>Autohaus Pezzei e.K.<br>Im Lipperfeld 3a<br>46047 Oberhausen</p>
+          <p class="muted" style="margin-top:10px">Gewerbegebiet am Technologiezentrum, wenige Minuten vom Centro. Kundenparkplätze direkt am Haus.</p>
+          <div class="btn-row" style="margin-top:18px">
+            <a class="btn btn--primary btn--sm" href="https://www.google.com/maps/dir/?api=1&destination=Im+Lipperfeld+3a,+46047+Oberhausen" target="_blank" rel="noopener">Route planen <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <div class="info-card">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg> Öffnungszeiten</h3>
+          <div class="hours">
+            <div><span>Montag – Freitag</span><span>8:00 – 17:30 Uhr</span></div>
+            <div><span>Samstag</span><span>9:00 – 13:00 Uhr</span></div>
+            <div><span>Sonntag</span><span>geschlossen</span></div>
+          </div>
+        </div>
+        <div class="info-card">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Erreichbarkeit</h3>
+          <p><a href="tel:+4920821100">0208 21 100</a><br><a href="mailto:info@auto-pezzei.de">info@auto-pezzei.de</a><br><a href="https://wa.me/4920821100" target="_blank" rel="noopener">WhatsApp: 0208 21 100</a></p>
+        </div>
+      </div>
+      <div class="map" id="map" aria-label="Karte: Autohaus Pezzei, Im Lipperfeld 3a, Oberhausen"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/logo.png" alt="Autohaus Pezzei" width="424" height="91">
+        <p>Familiengeführtes Autohaus in Oberhausen seit 1978. Citroën Premium-Werkstatt, Service für alle Marken, Gebrauchtwagen und Ankauf.</p>
+      </div>
+      <div>
+        <h3>Seiten</h3>
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="fahrzeuge.html">Fahrzeuge</a></li>
+          <li><a href="kontakt.html">Kontakt &amp; Anfahrt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Rechtliches</h3>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <ul>
+          <li>Autohaus Pezzei e.K.<br>Im Lipperfeld 3a<br>46047 Oberhausen</li>
+          <li><a href="tel:+4920821100">0208 21 100</a></li>
+          <li><a href="mailto:info@auto-pezzei.de">info@auto-pezzei.de</a></li>
+          <li><a href="https://wa.me/4920821100" target="_blank" rel="noopener">WhatsApp schreiben</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> Autohaus Pezzei e.K. Alle Rechte vorbehalten.</span>
+      <span>Inhaber: Peter Pezzei · USt-IdNr. DE 120669411</span>
+    </div>
+  </div>
+</footer>
+<div class="sticky-cta" aria-label="Schnellkontakt">
+  <a href="tel:+4920821100"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Anrufen</a>
+  <a class="is-brand" href="kontakt.html#termin"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg> Termin</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

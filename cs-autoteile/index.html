@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C &amp; S Autoteile Oberhausen – Autoteile für alle Marken, ab Lager</title>
+  <meta name="description" content="C & S Autoteile Handelsgesellschaft GmbH in Oberhausen: Bremsen, Filter, Öle, Fahrwerk, Batterien und Zubehör für Pkw und Transporter. Teile ab Lager, Bestellung meist am nächsten Werktag, Lieferservice für Werkstätten.">
+  <meta name="theme-color" content="#181818">
+  <script>(function(){try{var t=localStorage.getItem('cs-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23C62A43'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-weight='700' font-size='15' fill='white' text-anchor='middle'%3EC%26S%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=Kaushan+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-tire" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v7M12 15v7M2 12h7M15 12h7"/></symbol>
+  <symbol id="i-disc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="6" r="1"/><circle cx="18" cy="12" r="1"/><circle cx="12" cy="18" r="1"/><circle cx="6" cy="12" r="1"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.7s6.5 7.2 6.5 11.8a6.5 6.5 0 0 1-13 0C5.5 9.9 12 2.7 12 2.7z"/></symbol>
+  <symbol id="i-spring" viewBox="0 0 24 24"><path d="M12 2v3M12 19v3"/><path d="M7 5h10l-10 3.5h10L7 12h10l-10 3.5h10L7 19h10"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="12" rx="2"/><path d="M22 11v4"/><path d="M6 13h4M8 11v4M14 13h4"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-id" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M5 16c.5-1.5 1.7-2 3-2s2.5.5 3 2M14 10h5M14 14h5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M4 10h12M4 14h9"/><path d="M19 6a7 7 0 0 0-10 0c-2.7 2.7-2.7 9.3 0 12a7 7 0 0 0 10 0"/></symbol>
+</svg>
+<div class="topbar">
+  <div class="container">
+    <div class="topbar__left">
+      <span><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Elsa-Brändström-Str. 114 · 46045 Oberhausen</span>
+      <!-- TODO: Öffnungszeiten sind Platzhalter (auch in #standort, Footer, kontakt.html) -->
+      <span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg> Mo–Fr 8:00–18:00 · Sa 9:00–13:00</span>
+    </div>
+    <div class="topbar__right">
+      <a href="tel:+49208805959"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> 0208 80 59 59</a>
+    </div>
+  </div>
+</div>
+<header class="nav">
+  <div class="container">
+    <!-- Text-Logo als Nachbau. Sobald das Original als SVG/PNG vorliegt: <a class="brand"><img …></a> -->
+    <a class="brand brand--cs" href="index.html" aria-label="C &amp; S Autoteile – Startseite"><span class="brand__script" aria-hidden="true">C&amp;S</span><span class="brand__word">Autoteile</span></a>
+    <nav class="nav__links" aria-label="Hauptnavigation"><a href="index.html" aria-current="page">Start</a><a href="sortiment.html">Sortiment</a><a href="index.html#werkstaetten">Werkstätten</a><a href="kontakt.html">Kontakt</a></nav>
+    <div class="nav__actions">
+      <!-- TODO: WhatsApp-Nummer ist Platzhalter (Festnetznummer). Echte WhatsApp-Business-Nummer eintragen oder Buttons entfernen. -->
+      <a class="icon-btn icon-btn--wa" href="https://wa.me/49208805959" target="_blank" rel="noopener" aria-label="WhatsApp schreiben"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Hellen Modus einschalten"><span class="i-sun"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg></span><span class="i-moon"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg></span></button>
+      <a class="btn btn--primary btn--sm" href="kontakt.html#anfrage">Teil anfragen</a>
+      <button class="icon-btn nav__burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menü öffnen">
+        <span class="i-open"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></span><span class="i-close" style="display:none"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" aria-current="page">Start</a><a href="sortiment.html">Sortiment</a><a href="index.html#werkstaetten">Werkstätten</a><a href="kontakt.html">Kontakt</a>
+  <div class="btn-row">
+    <a class="btn btn--primary" href="kontakt.html#anfrage">Teil anfragen</a>
+    <a class="btn btn--whatsapp" href="https://wa.me/49208805959" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp</a>
+  </div>
+</div>
+<main id="main">
+
+<section class="hero">
+  <!-- Platzhalterfoto (Unsplash-Hotlink), vor Livegang durch eigenes Foto ersetzen -->
+  <div class="hero__media"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2000&q=70" alt="" width="2000" height="1333" fetchpriority="high"></div>
+  <span class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg> Teile ab Lager · heute abholen</span>
+  <div class="container">
+    <h1><span class="line">Autoteile</span><span class="line">für alle</span><span class="line line--accent">Marken.</span></h1>
+    <p class="lead">C &amp; S Autoteile in Oberhausen: Verschleißteile, Öle, Batterien und Zubehör für Pkw und Transporter. Ab Lager sofort mitnehmen oder bis zum nächsten Werktag bestellt. Für Autofahrer und Werkstätten.</p>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="kontakt.html#anfrage"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg> Teil anfragen <span class="hint">Antwort am selben Tag</span></a>
+      <a class="btn btn--ghost" href="tel:+49208805959"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> 0208 80 59 59</a>
+    </div>
+    <ul class="trust">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg> <span><strong>Alle Marken</strong> Pkw, Transporter, Youngtimer</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg> <span><strong>Lager vor Ort</strong> gängige Teile sofort</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg> <span><strong>Bestellung</strong> meist am nächsten Werktag</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg> <span><strong>Werkstattkunden</strong> Lieferung und Kundenkonto</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="sortiment">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Sortiment</p>
+      <h2>Vom Bremsbelag bis zur Batterie</h2>
+      <p class="lead">Alles, was im Alltag verschleißt oder ausfällt, in Erstausrüsterqualität oder als preiswerte Alternative. Sie entscheiden.</p>
+    </div>
+    <div class="cards">
+      <a class="card" href="sortiment.html#bremsen">
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-disc"/></svg></span>
+        <h3>Bremsen</h3>
+        <p>Bremsscheiben, Beläge, Sättel, Bremsschläuche, Sensoren und Bremsflüssigkeit. Achsweise im Set oder einzeln.</p>
+        <span class="card__meta">Meist ab Lager <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="card" href="sortiment.html#filter-oele">
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-drop"/></svg></span>
+        <h3>Filter &amp; Öle</h3>
+        <p>Öl-, Luft-, Innenraum- und Kraftstofffilter. Motoröle mit Herstellerfreigabe, Getriebeöl, Kühlmittel, AdBlue.</p>
+        <span class="card__meta">Freigabe passend zum Auto <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="card" href="sortiment.html#fahrwerk">
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-spring"/></svg></span>
+        <h3>Fahrwerk &amp; Lenkung</h3>
+        <p>Stoßdämpfer, Federn, Domlager, Querlenker, Spurstangen, Koppelstangen und Radlager.</p>
+        <span class="card__meta">Achsweise im Set <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="card" href="sortiment.html#elektrik">
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-battery"/></svg></span>
+        <h3>Elektrik &amp; Batterien</h3>
+        <p>Starterbatterien, Lichtmaschinen, Anlasser, Zündkerzen und -spulen, Sensoren, Leuchtmittel und Wischer.</p>
+        <span class="card__meta">Batterie-Check am Tresen <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="card" href="sortiment.html#motor">
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-gauge"/></svg></span>
+        <h3>Motor &amp; Antrieb</h3>
+        <p>Zahnriemen- und Wasserpumpensätze, Kupplungen, Antriebswellen, Dichtungen, Abgasanlagen und Katalysatoren.</p>
+        <span class="card__meta">Komplettsätze <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="card" href="sortiment.html#zubehoer">
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-tire"/></svg></span>
+        <h3>Räder, Zubehör &amp; Pflege</h3>
+        <p>Reifen auf Bestellung, Radschrauben, Dachträger, Pflegeprodukte, Werkzeug und Werkstattbedarf.</p>
+        <span class="card__meta">Auch Kleinteile <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+    </div>
+    <div class="tip">
+      <svg class="icon" aria-hidden="true"><use href="#i-id"/></svg>
+      <p><strong>Fahrzeugschein mitbringen:</strong> Mit HSN und TSN (Felder 2.1 und 2.2) finden wir das passende Teil in einer Minute. Per Formular oder WhatsApp geht es auch mit einem Foto.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--light" id="beratung">
+  <div class="container">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Beratung am Tresen</p>
+        <h2>Sagen Sie uns, was kaputt ist. Wir finden das Teil.</h2>
+        <p class="lead">Kein Rätselraten im Online-Shop: Unser Team sucht das passende Teil anhand von HSN/TSN, Kennzeichen oder Fahrgestellnummer und sagt Ihnen sofort, ob es am Lager liegt. Auf Wunsch zeigen wir Ihnen eine günstigere Alternative zum Originalteil.</p>
+        <ul class="checks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span>Teileidentifikation per HSN/TSN, Kennzeichen oder Fahrgestellnummer</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span>Erstausrüsterqualität oder preiswerte Alternative, Sie entscheiden</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span>Tausende gängige Teile am Lager, der Rest meist am nächsten Werktag</span></li>
+          <!-- TODO: Rückgabekonditionen mit dem Kunden abstimmen -->
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> <span>Umtausch ungeöffneter Lagerware innerhalb von 14 Tagen</span></li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="kontakt.html#anfrage">Teil anfragen <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost" href="sortiment.html">Sortiment ansehen</a>
+        </div>
+        <p class="note"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg> Telefonische Beratung Mo–Fr 8:00–18:00 Uhr.</p>
+      </div>
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1200&q=70" alt="Regale mit Autoteilen im Lager" width="1200" height="900" loading="lazy">
+        <span class="tag">Lager vor Ort</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="werkstaetten">
+  <div class="container">
+    <div class="split split--reverse">
+      <div>
+        <p class="eyebrow">Für Werkstätten &amp; Gewerbe</p>
+        <h2>Teile geliefert, bevor das Auto von der Bühne muss</h2>
+        <p class="lead">Freie Werkstätten, Autohäuser und Flottenbetreiber in Oberhausen und Umgebung bestellen bei uns per Telefon oder WhatsApp und bekommen die Teile mit unserem Lieferservice direkt in die Werkstatt.</p>
+        <!-- TODO: Konditionen (Lieferzeiten, Touren, Pfand) mit dem Kunden abstimmen -->
+        <ul class="chips" aria-label="Leistungen für Gewerbekunden">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Kundenkonto mit Monatsrechnung</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Lieferservice im Stadtgebiet</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Mehrere Touren täglich</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Staffelpreise</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Fester Ansprechpartner</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Altteil-Rücknahme mit Pfand</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="kontakt.html#anfrage"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg> Gewerbekonto anfragen</a>
+          <a class="btn btn--ghost" href="tel:+49208805959"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> 0208 80 59 59</a>
+        </div>
+      </div>
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=1200&q=70" alt="Mechaniker arbeitet unter einem Fahrzeug" width="1200" height="900" loading="lazy">
+        <span class="tag tag--bottom">Lieferung nach Oberhausen, Mülheim, Bottrop und Essen auf Anfrage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface" id="marken">
+  <div class="container">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=70" alt="Hände mit Schraubenschlüssel am Motor" width="1200" height="900" loading="lazy">
+        <span class="tag">Erstausrüsterqualität</span>
+      </div>
+      <div>
+        <p class="eyebrow">Marken</p>
+        <h2>Markenqualität, die Werkstätten verbauen</h2>
+        <p class="lead">Wir führen Teile der bekannten Erstausrüster und Markenhersteller. Billigware ohne Herkunft gibt es bei uns nicht. Dafür eine ehrliche Empfehlung, welche Qualitätsstufe zu Ihrem Auto passt.</p>
+        <!-- TODO: Markenliste ist Platzhalter, mit dem Kunden abstimmen -->
+        <ul class="chips" aria-label="Marken im Sortiment">
+          <li>Bosch</li><li>Mann-Filter</li><li>Mahle</li><li>Brembo</li><li>ATE</li><li>TRW</li><li>Febi Bilstein</li><li>Sachs</li><li>SKF</li><li>Varta</li><li>Hella</li><li>NGK</li><li>Castrol</li><li>Liqui Moly</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn--ghost" href="sortiment.html">Sortiment ansehen <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ablauf">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Ablauf</p>
+      <h2>So kommen Sie an Ihr Teil</h2>
+      <p class="lead">Vier Schritte, meist am selben Tag erledigt.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="step__num">01</span><h3>Anfragen</h3><p>Per Telefon, WhatsApp oder Formular. HSN/TSN aus dem Fahrzeugschein oder das Kennzeichen genügen.</p></li>
+      <li class="step"><span class="step__num">02</span><h3>Prüfen</h3><p>Wir prüfen Verfügbarkeit und Preis und nennen Ihnen, wenn sinnvoll, eine günstigere Alternative.</p></li>
+      <li class="step"><span class="step__num">03</span><h3>Abholen oder liefern</h3><p>Lagerteile sofort, Bestellteile meist am nächsten Werktag. Werkstätten beliefern wir direkt.</p></li>
+      <li class="step"><span class="step__num">04</span><h3>Einbauen</h3><p>Fragen beim Einbau? Rufen Sie an. Altteile mit Pfand nehmen wir zurück.</p></li>
+    </ol>
+    <div class="tip">
+      <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+      <p><strong>Kein Fahrzeugschein zur Hand?</strong> Schicken Sie uns ein Foto vom Teil oder vom Kennzeichen per WhatsApp. Wir finden den Rest heraus.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kontakt-cta">
+  <div class="container">
+    <div class="cta-box">
+      <p class="eyebrow" style="justify-content:center">Kontakt</p>
+      <h2>Teil anfragen</h2>
+      <p class="lead">Rufen Sie an, schreiben Sie per WhatsApp oder nutzen Sie das Formular. Während der Öffnungszeiten melden wir uns in der Regel innerhalb einer Stunde.</p>
+      <ul class="facts">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Kostenlos und unverbindlich</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Antwort meist innerhalb einer Stunde</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Abholung oder Lieferung</li>
+      </ul>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href="https://wa.me/49208805959" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp</a>
+        <a class="btn btn--primary" href="tel:+49208805959"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Anrufen</a>
+        <a class="btn btn--ghost" href="kontakt.html#anfrage"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg> Formular</a>
+      </div>
+      <!-- TODO: Bewertungswert ist ein Platzhalter. Echte Google-Bewertung eintragen oder .rating entfernen. -->
+      <div class="rating" aria-label="Google-Bewertung (Beispielwert)">
+        <div>
+          <div class="rating__stars" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></div>
+          <small>Google Bewertungen</small>
+        </div>
+        <div>
+          <span class="rating__score">4,6</span>
+          <small>von 5 Sternen</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--light" id="standort">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Standort</p>
+      <h2>So finden Sie uns</h2>
+    </div>
+    <div class="location">
+      <div class="location__info">
+        <div class="info-card">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Adresse</h3>
+          <p>C &amp; S Autoteile Handelsgesellschaft GmbH<br>Elsa-Brändström-Str. 114<br>46045 Oberhausen</p>
+          <!-- TODO: Lagebeschreibung und Parksituation mit dem Kunden prüfen -->
+          <p class="muted" style="margin-top:10px">Oberhausen-Mitte, wenige Minuten vom Hauptbahnhof. Kurzzeitparkplätze vor dem Geschäft.</p>
+          <div class="btn-row" style="margin-top:18px">
+            <a class="btn btn--primary btn--sm" href="https://www.google.com/maps/dir/?api=1&destination=Elsa-Br%C3%A4ndstr%C3%B6m-Str.+114,+46045+Oberhausen" target="_blank" rel="noopener">Route planen <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <div class="info-card">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg> Öffnungszeiten</h3>
+          <div class="hours">
+            <div><span>Montag – Freitag</span><span>8:00 – 18:00 Uhr</span></div>
+            <div><span>Samstag</span><span>9:00 – 13:00 Uhr</span></div>
+            <div><span>Sonntag</span><span>geschlossen</span></div>
+          </div>
+        </div>
+        <div class="info-card">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Erreichbarkeit</h3>
+          <!-- TODO: E-Mail-Adresse ist Platzhalter -->
+          <p><a href="tel:+49208805959">0208 80 59 59</a><br><a href="mailto:info@cs-autoteile.de">info@cs-autoteile.de</a><br><a href="https://wa.me/49208805959" target="_blank" rel="noopener">WhatsApp: 0208 80 59 59</a></p>
+        </div>
+      </div>
+      <div class="map" id="map" data-lat="51.47959" data-lng="6.86218" data-zoom="16" data-title="C &amp; S Autoteile" data-address="Elsa-Brändström-Str. 114&lt;br&gt;46045 Oberhausen" aria-label="Karte: Elsa-Brändström-Str. 114, Oberhausen"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand brand--cs" href="index.html" aria-label="C &amp; S Autoteile – Startseite"><span class="brand__script" aria-hidden="true">C&amp;S</span><span class="brand__word">Autoteile</span></a>
+        <p>Autoteile-Fachhandel in Oberhausen für Privatkunden und Werkstätten. Teile für alle Marken ab Lager, Bestellservice und Lieferung.</p>
+      </div>
+      <div>
+        <h3>Seiten</h3>
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="sortiment.html">Sortiment</a></li>
+          <li><a href="index.html#werkstaetten">Für Werkstätten</a></li>
+          <li><a href="kontakt.html">Kontakt &amp; Anfahrt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Rechtliches</h3>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <ul>
+          <li>C &amp; S Autoteile Handelsgesellschaft GmbH<br>Elsa-Brändström-Str. 114<br>46045 Oberhausen</li>
+          <li><a href="tel:+49208805959">0208 80 59 59</a></li>
+          <li><a href="mailto:info@cs-autoteile.de">info@cs-autoteile.de</a></li>
+          <li><a href="https://wa.me/49208805959" target="_blank" rel="noopener">WhatsApp schreiben</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> C &amp; S Autoteile Handelsgesellschaft GmbH. Alle Rechte vorbehalten.</span>
+      <span>Mo–Fr 8:00–18:00 · Sa 9:00–13:00</span>
+    </div>
+  </div>
+</footer>
+<div class="sticky-cta" aria-label="Schnellkontakt">
+  <a href="tel:+49208805959"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Anrufen</a>
+  <a class="is-brand" href="kontakt.html#anfrage"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg> Teil anfragen</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

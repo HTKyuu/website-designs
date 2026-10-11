@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design System – Komponentenreferenz</title>
+  <meta name="description" content="Komponentenreferenz des gemeinsamen Design Systems für die Vorlagen Küchen Horstmann, Kontora und Transvera.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='4' fill='%2315181c'/%3E%3Cpath d='M8 8h12v12H8z' stroke='white' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kuechen-horstmann/ds.css">
+  <link rel="stylesheet" href="kuechen-horstmann/theme.css" id="theme-css">
+  <style>
+    /* Documentation layout only — not part of the design system */
+    .docs { display: grid; grid-template-columns: 240px minmax(0, 1fr); min-height: calc(100vh - var(--header-height)); }
+    .docs-nav { position: sticky; top: var(--header-height); align-self: start; height: calc(100vh - var(--header-height)); overflow-y: auto; padding: var(--space-6) var(--space-4); border-right: 1px solid var(--color-border); background: var(--color-bg-alt); }
+    .docs-nav a { display: block; padding: 6px var(--space-3); border-radius: var(--radius); color: var(--color-text-secondary); font-size: var(--fs-14); text-decoration: none; }
+    .docs-nav a:hover { background: var(--color-surface-muted); color: var(--color-text); }
+    .docs-nav .app-sidebar-label { margin-top: var(--space-4); }
+    .docs-main { padding: var(--space-12) var(--space-12) var(--space-24); max-width: 1120px; }
+    .docs-section { padding-top: var(--space-12); margin-top: var(--space-12); border-top: 1px solid var(--color-border); }
+    .docs-section > h2 { margin-bottom: var(--space-2); }
+    .docs-section > p { margin-bottom: var(--space-6); max-width: 680px; }
+    .specimen { padding: var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+    .specimen + .specimen { margin-top: var(--space-4); }
+    .specimen-label { margin-bottom: var(--space-4); font-size: var(--fs-12); font-weight: var(--fw-semibold); letter-spacing: .04em; text-transform: uppercase; color: var(--color-text-muted); }
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-3); }
+    .swatch { border: 1px solid var(--color-border); border-radius: var(--radius); overflow: hidden; font-size: var(--fs-12); }
+    .swatch-color { height: 56px; border-bottom: 1px solid var(--color-border); }
+    .swatch-meta { padding: var(--space-2) var(--space-3); }
+    .swatch-meta strong { display: block; font-size: var(--fs-13); }
+    .swatch-meta code { color: var(--color-text-muted); font-family: var(--font-mono); }
+    .type-row { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: var(--space-6); align-items: baseline; padding: var(--space-4) 0; border-bottom: 1px dashed var(--color-border); }
+    .type-row:last-child { border-bottom: 0; }
+    .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+    .spacing-scale { display: grid; gap: var(--space-2); }
+    .spacing-scale div { display: grid; grid-template-columns: 80px 1fr; gap: var(--space-4); align-items: center; font-size: var(--fs-13); font-family: var(--font-mono); color: var(--color-text-muted); }
+    .spacing-scale span { display: block; height: 12px; background: var(--color-primary-subtle-border); border-radius: 2px; }
+    .force-focus { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+    @media (max-width: 1024px) {
+      .docs { grid-template-columns: minmax(0, 1fr); }
+      .docs-nav { display: none; }
+      .docs-main { padding: var(--space-8) var(--gutter) var(--space-16); }
+    }
+    @media (max-width: 640px) {
+      .demo-grid { grid-template-columns: minmax(0, 1fr); }
+      .type-row { grid-template-columns: minmax(0, 1fr); gap: var(--space-1); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="site-header">
+    <div class="container header-inner" style="max-width:none">
+      <a class="brand" href="index.html">
+        <svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="4" fill="var(--color-text)"/><path d="M8 8h12v12H8z" stroke="#fff" stroke-width="2.4" fill="none"/></svg>
+        Design System
+      </a>
+      <nav class="breadcrumb hide-md" aria-label="Brotkrumen">
+        <ol><li><a href="index.html">Vorlagen</a></li><li><span aria-current="page">Komponentenreferenz</span></li></ol>
+      </nav>
+      <div class="header-actions">
+        <label class="t-sm t-muted hide-md" for="theme-switch">Theme</label>
+        <select class="select select--sm" id="theme-switch" style="width:auto">
+          <option value="kuechen-horstmann/theme.css">Küchen Horstmann</option>
+          <!-- Kontora and Transvera live in templates/ (not published)
+          <option value="kontora/theme.css">Kontora</option>
+          <option value="transvera/theme.css">Transvera</option>
+          -->
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs">
+    <aside class="docs-nav" aria-label="Abschnitte">
+      <div class="app-sidebar-label">Grundlagen</div>
+      <a href="#farben">Farben</a>
+      <a href="#typografie">Typografie</a>
+      <a href="#abstaende">Abstände</a>
+      <div class="app-sidebar-label">Aktionen</div>
+      <a href="#buttons">Buttons</a>
+      <a href="#dropdowns">Dropdowns</a>
+      <div class="app-sidebar-label">Formulare</div>
+      <a href="#eingaben">Eingabefelder</a>
+      <a href="#auswahl">Auswahl</a>
+      <a href="#validierung">Validierung</a>
+      <div class="app-sidebar-label">Daten</div>
+      <a href="#badges">Badges &amp; Status</a>
+      <a href="#tabellen">Tabellen &amp; Pagination</a>
+      <a href="#karten">Karten</a>
+      <div class="app-sidebar-label">Navigation</div>
+      <a href="#tabs">Tabs</a>
+      <a href="#breadcrumbs">Breadcrumbs</a>
+      <div class="app-sidebar-label">Feedback</div>
+      <a href="#alerts">Alerts</a>
+      <a href="#toasts">Toasts</a>
+      <a href="#overlays">Modal &amp; Tooltip</a>
+      <a href="#zustaende">Leer-, Lade- &amp; Fehlerzustände</a>
+    </aside>
+
+    <main class="docs-main" id="main">
+      <p class="t-eyebrow">Version 1.0 · Oktober 2026</p>
+      <h1 class="t-h1 mt-2">Komponentenreferenz</h1>
+      <p class="t-lead mt-4" style="max-width:720px">Alle drei Vorlagen verwenden dieselben Komponenten aus <code class="t-mono">ds.css</code> und <code class="t-mono">ds.js</code>, die jeweils als Kopie im Vorlagenordner liegen. Marken unterscheiden sich ausschließlich über Tokens in ihrer <code class="t-mono">theme.css</code> – wechseln Sie oben das Theme, um es zu prüfen.</p>
+
+      <!-- Farben -->
+      <section class="docs-section" id="farben" aria-labelledby="h-farben">
+        <h2 class="t-h3" id="h-farben">Farben</h2>
+        <p class="t-secondary">Eine zurückhaltende Primärfarbe für Aktionen und Hervorhebung, neutrale Flächen und gedämpfte Statusfarben. Keine Verläufe.</p>
+        <div class="specimen">
+          <div class="specimen-label">Marke &amp; Neutral</div>
+          <div class="swatches" id="swatches-brand"></div>
+        </div>
+        <div class="specimen">
+          <div class="specimen-label">Status</div>
+          <div class="swatches" id="swatches-status"></div>
+        </div>
+      </section>
+
+      <!-- Typografie -->
+      <section class="docs-section" id="typografie" aria-labelledby="h-typo">
+        <h2 class="t-h3" id="h-typo">Typografie</h2>
+        <p class="t-secondary">Eine Schriftfamilie je Marke, gesetzt auf einer festen Skala. Zahlen in Tabellen und Kennzahlen verwenden tabellarische Ziffern.</p>
+        <div class="specimen">
+          <div class="type-row"><span class="t-caption">Display · 48/1.1</span><span class="t-display">Präzise geplant</span></div>
+          <div class="type-row"><span class="t-caption">H1 · 40/1.15</span><span class="t-h1">Seitentitel</span></div>
+          <div class="type-row"><span class="t-caption">H2 · 32/1.2</span><span class="t-h2">Abschnittsüberschrift</span></div>
+          <div class="type-row"><span class="t-caption">H3 · 24/1.3</span><span class="t-h3">Unterüberschrift</span></div>
+          <div class="type-row"><span class="t-caption">H4 · 20/1.35</span><span class="t-h4">Kartentitel</span></div>
+          <div class="type-row"><span class="t-caption">Lead · 18/1.6</span><span class="t-lead">Einleitender Text unter einer Überschrift.</span></div>
+          <div class="type-row"><span class="t-caption">Body · 16/1.55</span><span>Fließtext für Beschreibungen und Inhalte mit guter Lesbarkeit.</span></div>
+          <div class="type-row"><span class="t-caption">Label · 14/500</span><span class="t-label">Feldbeschriftung</span></div>
+          <div class="type-row"><span class="t-caption">Small · 14</span><span class="t-sm t-secondary">Sekundärer Text und Tabellenzellen</span></div>
+          <div class="type-row"><span class="t-caption">Caption · 12</span><span class="t-caption">Metadaten · Zuletzt geändert am 08.10.2026</span></div>
+          <div class="type-row"><span class="t-caption">Eyebrow · 13/600</span><span class="t-eyebrow">Abschnittsmarke</span></div>
+        </div>
+      </section>
+
+      <!-- Abstände -->
+      <section class="docs-section" id="abstaende" aria-labelledby="h-space">
+        <h2 class="t-h3" id="h-space">Abstände</h2>
+        <p class="t-secondary">4-px-Raster. Abschnitte nutzen 96 px (Desktop) bzw. 64 px (Mobil), Karten 24 px Innenabstand.</p>
+        <div class="specimen spacing-scale" id="spacing-scale"></div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="docs-section" id="buttons" aria-labelledby="h-buttons">
+        <h2 class="t-h3" id="h-buttons">Buttons</h2>
+        <p class="t-secondary">Pro Bereich genau eine primäre Aktion. Sekundäre Aktionen als Outline, tertiäre als Ghost oder Link.</p>
+        <div class="specimen">
+          <div class="specimen-label">Varianten</div>
+          <div class="cluster">
+            <button class="btn btn--primary" type="button">Primär</button>
+            <button class="btn" type="button">Sekundär</button>
+            <button class="btn btn--ghost" type="button">Ghost</button>
+            <button class="btn btn--link" type="button">Link-Button</button>
+            <button class="btn btn--danger" type="button">Löschen</button>
+          </div>
+        </div>
+        <div class="specimen">
+          <div class="specimen-label">Größen &amp; Icons</div>
+          <div class="cluster">
+            <button class="btn btn--primary btn--sm" type="button">Klein</button>
+            <button class="btn btn--primary" type="button">Standard</button>
+            <button class="btn btn--primary btn--lg" type="button">Groß</button>
+            <button class="btn" type="button"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-download"/></svg>Exportieren</button>
+            <button class="btn btn--icon" type="button" aria-label="Einstellungen" data-tooltip="Einstellungen"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg></button>
+          </div>
+        </div>
+        <div class="specimen">
+          <div class="specimen-label">Zustände</div>
+          <div class="cluster">
+            <button class="btn btn--primary" type="button">Standard</button>
+            <button class="btn btn--primary force-focus" type="button">Fokus</button>
+            <button class="btn btn--primary" type="button" disabled>Deaktiviert</button>
+            <button class="btn btn--primary is-loading" type="button" aria-busy="true"><span>Speichern</span></button>
+            <button class="btn btn--primary" type="button" id="demo-loading"><span>Laden simulieren</span></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dropdowns -->
+      <section class="docs-section" id="dropdowns" aria-labelledby="h-dd">
+        <h2 class="t-h3" id="h-dd">Dropdowns</h2>
+        <p class="t-secondary">Öffnen per Klick oder Pfeil nach unten, Navigation mit Pfeiltasten, Schließen mit Esc oder Klick außerhalb.</p>
+        <div class="specimen" style="min-height:260px">
+          <div class="dropdown" data-dropdown>
+            <button class="btn" type="button" data-dropdown-trigger aria-expanded="false" aria-controls="dd-demo">Aktionen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg></button>
+            <div class="dropdown-menu" id="dd-demo" hidden>
+              <div class="dropdown-label">Dokument</div>
+              <button class="dropdown-item" type="button"><svg class="icon" aria-hidden="true"><use href="#i-pencil"/></svg>Bearbeiten</button>
+              <button class="dropdown-item" type="button"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Duplizieren</button>
+              <button class="dropdown-item" type="button"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Herunterladen</button>
+              <div class="dropdown-divider" role="separator"></div>
+              <button class="dropdown-item dropdown-item--danger" type="button" data-modal-open="modal-confirm"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Löschen …</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Eingaben -->
+      <section class="docs-section" id="eingaben" aria-labelledby="h-inputs">
+        <h2 class="t-h3" id="h-inputs">Eingabefelder</h2>
+        <p class="t-secondary">Beschriftungen stehen immer über dem Feld. Hinweise erklären das Format, bevor ein Fehler entsteht.</p>
+        <div class="specimen demo-grid">
+          <div class="field">
+            <label class="field-label" for="ds-1">Firmenname</label>
+            <input class="input" id="ds-1" value="Nordwerk Energie GmbH">
+          </div>
+          <div class="field">
+            <label class="field-label" for="ds-2">USt-IdNr. <span class="optional">(optional)</span></label>
+            <input class="input" id="ds-2" placeholder="DE123456789" aria-describedby="ds-2-hint">
+            <span class="field-hint" id="ds-2-hint">Zwei Buchstaben gefolgt von 9 Ziffern</span>
+          </div>
+          <div class="field is-invalid">
+            <label class="field-label" for="ds-3">IBAN</label>
+            <input class="input" id="ds-3" value="DE89 3704 0044" aria-invalid="true" aria-describedby="ds-3-error">
+            <div class="field-error" id="ds-3-error"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-alert-circle"/></svg><span>Die IBAN ist unvollständig. Eine deutsche IBAN hat 22 Zeichen.</span></div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ds-4">Kundennummer</label>
+            <input class="input" id="ds-4" value="K-100482" disabled>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ds-5">Suche</label>
+            <div class="input-group">
+              <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+              <input class="input" type="search" id="ds-5" placeholder="Lieferant, Rechnung oder Auftrag">
+              <span class="kbd">/</span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ds-6">Land</label>
+            <select class="select" id="ds-6"><option>Deutschland</option><option>Österreich</option><option>Schweiz</option></select>
+          </div>
+          <div class="field" style="grid-column:1/-1">
+            <label class="field-label" for="ds-7">Bemerkung</label>
+            <textarea class="textarea" id="ds-7" rows="3" placeholder="Interne Notiz zur Freigabe"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Auswahl -->
+      <section class="docs-section" id="auswahl" aria-labelledby="h-choice">
+        <h2 class="t-h3" id="h-choice">Auswahl</h2>
+        <p class="t-secondary">Checkboxen für Mehrfachauswahl, Radio-Buttons für genau eine Option, Segmente für Ansichtswechsel.</p>
+        <div class="specimen demo-grid">
+          <fieldset style="border:0;padding:0;margin:0" class="stack stack--sm">
+            <legend class="field-label" style="margin-bottom:8px">Benachrichtigungen</legend>
+            <label class="check"><input type="checkbox" checked>Neue Rechnungen zur Freigabe</label>
+            <label class="check"><input type="checkbox" checked>Ablaufende Skontofristen</label>
+            <label class="check"><input type="checkbox">Wöchentliche Zusammenfassung</label>
+          </fieldset>
+          <fieldset style="border:0;padding:0;margin:0" class="stack stack--sm">
+            <legend class="field-label" style="margin-bottom:8px">Zahlungsweise</legend>
+            <label class="check"><input type="radio" name="pay" checked>SEPA-Überweisung</label>
+            <label class="check"><input type="radio" name="pay">SEPA-Lastschrift</label>
+            <label class="check"><input type="radio" name="pay" disabled>Scheck (nicht verfügbar)</label>
+          </fieldset>
+          <div>
+            <div class="field-label" style="margin-bottom:8px" id="seg-label">Ansicht</div>
+            <div class="tabs-list tabs-list--segmented" role="tablist" aria-labelledby="seg-label">
+              <button class="tab" role="tab" aria-selected="true" aria-controls="seg-1" id="seg-t1">Liste</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="seg-2" id="seg-t2">Kalender</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="seg-3" id="seg-t3">Karte</button>
+            </div>
+            <p class="t-sm t-muted mt-2" id="seg-1" role="tabpanel" aria-labelledby="seg-t1">Listenansicht aktiv.</p>
+            <p class="t-sm t-muted mt-2" id="seg-2" role="tabpanel" aria-labelledby="seg-t2" hidden>Kalenderansicht aktiv.</p>
+            <p class="t-sm t-muted mt-2" id="seg-3" role="tabpanel" aria-labelledby="seg-t3" hidden>Kartenansicht aktiv.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Validierung -->
+      <section class="docs-section" id="validierung" aria-labelledby="h-val">
+        <h2 class="t-h3" id="h-val">Validierung</h2>
+        <p class="t-secondary">Fehler werden nach dem ersten Absenden gesammelt angezeigt, verlinkt und danach live beim Korrigieren aktualisiert.</p>
+        <div class="specimen">
+          <form class="form" id="val-form" data-validate data-success-toast="Gespeichert|Der Lieferant wurde angelegt." style="max-width:560px">
+            <div data-error-summary hidden></div>
+            <div class="form-row">
+              <div class="field">
+                <label class="field-label" for="v-name">Lieferant<span class="required" aria-hidden="true">*</span></label>
+                <input class="input" id="v-name" required data-msg-required="Bitte geben Sie den Lieferantennamen ein.">
+              </div>
+              <div class="field">
+                <label class="field-label" for="v-mail">E-Mail Buchhaltung<span class="required" aria-hidden="true">*</span></label>
+                <input class="input" id="v-mail" type="email" required data-msg-required="Bitte geben Sie eine E-Mail-Adresse ein.">
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="v-zip">Postleitzahl<span class="required" aria-hidden="true">*</span></label>
+              <input class="input" id="v-zip" inputmode="numeric" pattern="[0-9]{5}" required style="max-width:160px" data-msg-required="Bitte geben Sie die Postleitzahl ein." data-msg-pattern="Die Postleitzahl besteht aus fünf Ziffern.">
+            </div>
+            <div class="cluster">
+              <button class="btn btn--primary" type="submit"><span>Lieferant anlegen</span></button>
+              <button class="btn btn--ghost" type="reset">Zurücksetzen</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Badges -->
+      <section class="docs-section" id="badges" aria-labelledby="h-badges">
+        <h2 class="t-h3" id="h-badges">Badges &amp; Status</h2>
+        <p class="t-secondary">Status wird nie nur über Farbe vermittelt – immer mit Text.</p>
+        <div class="specimen">
+          <div class="specimen-label">Badges</div>
+          <div class="cluster">
+            <span class="badge">Entwurf</span>
+            <span class="badge badge--primary">Neu</span>
+            <span class="badge badge--info">In Prüfung</span>
+            <span class="badge badge--success">Freigegeben</span>
+            <span class="badge badge--warning">Abweichung</span>
+            <span class="badge badge--danger">Überfällig</span>
+            <span class="badge badge--success badge--dot">Aktiv</span>
+          </div>
+        </div>
+        <div class="specimen">
+          <div class="specimen-label">Statusindikatoren</div>
+          <div class="cluster" style="--cluster-gap:24px">
+            <span class="status status--success">Betriebsbereit</span>
+            <span class="status status--info">Synchronisiert</span>
+            <span class="status status--warning">Eingeschränkt</span>
+            <span class="status status--danger">Ausfall</span>
+            <span class="status status--neutral">Inaktiv</span>
+          </div>
+        </div>
+        <div class="specimen">
+          <div class="specimen-label">Fortschritt &amp; Avatare</div>
+          <div class="demo-grid" style="align-items:center">
+            <div><div class="cluster cluster--between t-sm"><span>Einrichtung</span><span class="t-muted">3 von 5 Schritten</span></div><div class="progress mt-2" role="progressbar" aria-label="Einrichtung" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:60%"></div></div></div>
+            <div class="cluster cluster--sm"><span class="avatar">SK</span><span class="avatar">MA</span><span class="avatar avatar--sm">JM</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabellen -->
+      <section class="docs-section" id="tabellen" aria-labelledby="h-tables">
+        <h2 class="t-h3" id="h-tables">Tabellen &amp; Pagination</h2>
+        <p class="t-secondary">Für dichte Daten. Zahlen rechtsbündig mit tabellarischen Ziffern, Primärspalte hervorgehoben, Kopfzeile ruhig.</p>
+        <div class="table-wrap">
+          <div class="table-toolbar">
+            <div class="input-group"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input class="input input--sm" type="search" placeholder="Suchen" aria-label="Tabelle durchsuchen"></div>
+            <button class="btn btn--sm" type="button"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-filter"/></svg>Filter</button>
+          </div>
+          <table class="table">
+            <caption class="visually-hidden">Beispieltabelle Aufträge</caption>
+            <thead><tr><th scope="col">Auftrag</th><th scope="col">Kunde</th><th scope="col">Erstellt</th><th scope="col" class="num">Betrag</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><td class="cell-primary">A-2026-1187<span class="cell-sub">L-Küche mit Insel</span></td><td>Familie Brandt</td><td class="t-num">16.09.2026</td><td class="num">24.860,00 €</td><td><span class="badge badge--info">In Fertigung</span></td></tr>
+              <tr><td class="cell-primary">A-2026-1192<span class="cell-sub">U-Küche</span></td><td>Dr. Katrin Wolters</td><td class="t-num">19.09.2026</td><td class="num">31.240,00 €</td><td><span class="badge badge--success">Montiert</span></td></tr>
+              <tr><td class="cell-primary">A-2026-1204<span class="cell-sub">Küchenzeile</span></td><td>M. und L. Hoppe</td><td class="t-num">24.09.2026</td><td class="num">11.980,00 €</td><td><span class="badge badge--warning">Liefertermin offen</span></td></tr>
+            </tbody>
+          </table>
+          <nav class="pagination" aria-label="Seitennavigation Beispiel" style="border-top:1px solid var(--color-border)">
+            <span>1–3 von 48 Aufträgen</span>
+            <div class="pagination-list">
+              <button class="page-btn" type="button" disabled aria-label="Vorherige Seite"><svg class="icon" aria-hidden="true"><use href="#i-chevron-left"/></svg></button>
+              <button class="page-btn" type="button" aria-current="page">1</button>
+              <button class="page-btn" type="button">2</button>
+              <button class="page-btn" type="button">3</button>
+              <span class="t-muted" aria-hidden="true">…</span>
+              <button class="page-btn" type="button">16</button>
+              <button class="page-btn" type="button" aria-label="Nächste Seite"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></button>
+            </div>
+          </nav>
+        </div>
+      </section>
+
+      <!-- Karten -->
+      <section class="docs-section" id="karten" aria-labelledby="h-cards">
+        <h2 class="t-h3" id="h-cards">Karten</h2>
+        <p class="t-secondary">Nur wenn sie Inhalte sinnvoll gruppieren. Dünne Rahmen, kein Schatten.</p>
+        <div class="grid grid--2">
+          <article class="card">
+            <div class="card-header"><h3 class="t-h5">Zahlungslauf ZL-2026-41</h3><span class="badge badge--info">Geplant</span></div>
+            <div class="card-body"><p class="t-sm t-secondary">214 Rechnungen · 1.937.480,12 € · Ausführung Freitag, 09.10.2026</p></div>
+            <div class="card-footer"><span class="t-caption">Erstellt von S. Krüger</span><button class="btn btn--sm btn--primary" type="button">Freigeben</button></div>
+          </article>
+          <article class="card">
+            <div class="card-body stack">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+              <h3 class="t-h4">Feature-Karte</h3>
+              <p class="t-sm t-secondary">Icon, Titel und kurzer Text – für Leistungs- und Funktionsübersichten.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Tabs -->
+      <section class="docs-section" id="tabs" aria-labelledby="h-tabs">
+        <h2 class="t-h3" id="h-tabs">Tabs</h2>
+        <p class="t-secondary">Pfeiltasten wechseln den Tab, Pos1/Ende springen zum ersten bzw. letzten.</p>
+        <div class="specimen">
+          <div class="tabs-list" role="tablist" aria-label="Beispiel-Tabs">
+            <button class="tab" role="tab" aria-selected="true" aria-controls="tp-1" id="tb-1">Übersicht</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="tp-2" id="tb-2">Positionen <span class="count">12</span></button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="tp-3" id="tb-3">Verlauf</button>
+          </div>
+          <div class="tab-panel mt-4" role="tabpanel" id="tp-1" aria-labelledby="tb-1" tabindex="0"><p class="t-sm t-secondary">Zusammenfassung des Vorgangs mit den wichtigsten Kennzahlen.</p></div>
+          <div class="tab-panel mt-4" role="tabpanel" id="tp-2" aria-labelledby="tb-2" tabindex="0" hidden><p class="t-sm t-secondary">Zwölf Positionen mit Menge, Einzelpreis und Kostenstelle.</p></div>
+          <div class="tab-panel mt-4" role="tabpanel" id="tp-3" aria-labelledby="tb-3" tabindex="0" hidden><p class="t-sm t-secondary">Chronologischer Verlauf aller Änderungen und Freigaben.</p></div>
+        </div>
+      </section>
+
+      <!-- Breadcrumbs -->
+      <section class="docs-section" id="breadcrumbs" aria-labelledby="h-bc">
+        <h2 class="t-h3" id="h-bc">Breadcrumbs</h2>
+        <p class="t-secondary">Für Hierarchien ab drei Ebenen. Die aktuelle Seite ist nicht verlinkt.</p>
+        <div class="specimen">
+          <nav class="breadcrumb" aria-label="Brotkrumen Beispiel">
+            <ol><li><a href="#breadcrumbs">Kreditoren</a></li><li><a href="#breadcrumbs">Lieferanten</a></li><li><a href="#breadcrumbs">Brückner &amp; Söhne KG</a></li><li><span aria-current="page">Bankverbindung</span></li></ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- Alerts -->
+      <section class="docs-section" id="alerts" aria-labelledby="h-alerts">
+        <h2 class="t-h3" id="h-alerts">Alerts</h2>
+        <p class="t-secondary">Für Hinweise im Kontext einer Seite. Für flüchtige Bestätigungen stattdessen Toasts verwenden.</p>
+        <div class="stack">
+          <div class="alert alert--info"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><div><div class="alert-title">Wartungsfenster</div>Am Sonntag, 18.10.2026, von 02:00 bis 04:00 Uhr ist die Plattform eingeschränkt verfügbar.</div></div>
+          <div class="alert alert--success"><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg><div><div class="alert-title">Import abgeschlossen</div>1.284 Rechnungen wurden übernommen. Es gab keine Fehler.</div></div>
+          <div class="alert alert--warning"><svg class="icon" aria-hidden="true"><use href="#i-alert-triangle"/></svg><div><div class="alert-title">Skontofrist läuft ab</div>12 Rechnungen mit 4.380 € Skonto sind nur noch bis morgen zahlbar.</div></div>
+          <div class="alert alert--danger"><svg class="icon" aria-hidden="true"><use href="#i-alert-circle"/></svg><div><div class="alert-title">Bankverbindung abgelehnt</div>Die Bank hat die SEPA-Datei zurückgewiesen. <a href="#alerts">Fehlerprotokoll ansehen</a></div></div>
+        </div>
+      </section>
+
+      <!-- Toasts -->
+      <section class="docs-section" id="toasts" aria-labelledby="h-toasts">
+        <h2 class="t-h3" id="h-toasts">Toasts</h2>
+        <p class="t-secondary">Werden unten rechts angezeigt, per Screenreader angesagt und schließen sich nach 6 Sekunden. Beim Überfahren mit der Maus pausiert der Timer.</p>
+        <div class="specimen cluster">
+          <button class="btn" type="button" data-toast="success">Erfolg</button>
+          <button class="btn" type="button" data-toast="info">Information</button>
+          <button class="btn" type="button" data-toast="warning">Warnung</button>
+          <button class="btn" type="button" data-toast="danger">Fehler</button>
+        </div>
+      </section>
+
+      <!-- Overlays -->
+      <section class="docs-section" id="overlays" aria-labelledby="h-overlays">
+        <h2 class="t-h3" id="h-overlays">Modal &amp; Tooltip</h2>
+        <p class="t-secondary">Modale halten den Fokus, schließen mit Esc und geben den Fokus an den Auslöser zurück. Tooltips erscheinen bei Hover und Tastaturfokus.</p>
+        <div class="specimen cluster">
+          <button class="btn btn--primary" type="button" data-modal-open="modal-confirm">Bestätigungsdialog öffnen</button>
+          <button class="btn" type="button" data-tooltip="Tooltips enthalten nur ergänzende Informationen.">Tooltip anzeigen</button>
+          <button class="btn btn--icon btn--ghost" type="button" aria-label="Hilfe" data-tooltip="Hilfe zu dieser Seite"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></button>
+        </div>
+      </section>
+
+      <!-- Zustände -->
+      <section class="docs-section" id="zustaende" aria-labelledby="h-states">
+        <h2 class="t-h3" id="h-states">Leer-, Lade- &amp; Fehlerzustände</h2>
+        <p class="t-secondary">Jeder Zustand erklärt, was passiert ist, und bietet einen nächsten Schritt.</p>
+        <div class="grid grid--3">
+          <div class="card">
+            <div class="empty-state">
+              <span class="empty-state-icon"><svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg></span>
+              <h3>Noch keine Rechnungen</h3>
+              <p>Laden Sie die erste Rechnung hoch oder verbinden Sie Ihr Rechnungspostfach.</p>
+              <div class="cluster"><button class="btn btn--sm btn--primary" type="button">Rechnung hochladen</button></div>
+            </div>
+          </div>
+          <div class="card" aria-busy="true" aria-label="Wird geladen">
+            <div class="card-body stack">
+              <span class="skeleton skeleton--title"></span>
+              <span class="skeleton skeleton--text"></span>
+              <span class="skeleton skeleton--text" style="width:85%"></span>
+              <span class="skeleton skeleton--text" style="width:60%"></span>
+              <div class="cluster" style="flex-wrap:nowrap;margin-top:8px"><span class="skeleton skeleton--circle" style="width:32px;height:32px;flex:none"></span><span class="skeleton skeleton--text" style="width:50%"></span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="empty-state empty-state--danger">
+              <span class="empty-state-icon"><svg class="icon" aria-hidden="true"><use href="#i-alert-triangle"/></svg></span>
+              <h3>Laden fehlgeschlagen</h3>
+              <p>Der Server hat nicht rechtzeitig geantwortet. Ihre Eingaben sind gespeichert.</p>
+              <div class="cluster"><button class="btn btn--sm" type="button"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-refresh"/></svg>Erneut versuchen</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="specimen mt-6">
+          <div class="specimen-label">Zeitstrahl</div>
+          <ol class="timeline" style="max-width:420px">
+            <li class="timeline-item is-done"><span class="timeline-marker"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><div><div class="timeline-title">Erfasst</div><div class="timeline-meta">08.10.2026, 09:14</div></div></li>
+            <li class="timeline-item is-current" aria-current="step"><span class="timeline-marker"></span><div><div class="timeline-title">In Freigabe</div><div class="timeline-meta">Stufe 1 von 2</div></div></li>
+            <li class="timeline-item"><span class="timeline-marker"></span><div><div class="timeline-title">Bezahlt</div><div class="timeline-meta">geplant 09.10.2026</div></div></li>
+          </ol>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="modal" id="modal-confirm" aria-labelledby="confirm-title" aria-describedby="confirm-desc">
+    <div class="modal-header">
+      <div>
+        <h2 class="t-h4" id="confirm-title">Entwurf endgültig löschen?</h2>
+        <p class="t-sm t-muted" id="confirm-desc">„Angebot A-2026-1204 V2“ wird mit allen Anhängen gelöscht. Dies kann nicht rückgängig gemacht werden.</p>
+      </div>
+      <button class="btn btn--icon btn--ghost btn--sm" type="button" data-modal-close aria-label="Dialog schließen"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" data-modal-close autofocus>Abbrechen</button>
+      <button class="btn btn--danger" type="button" id="confirm-delete">Endgültig löschen</button>
+    </div>
+  </dialog>
+
+  <script src="kuechen-horstmann/ds.js"></script>
+  <script>
+    document.addEventListener("ds:ready", function () {
+      /* Theme switcher */
+      var link = document.getElementById("theme-css");
+      var sw = document.getElementById("theme-switch");
+      try { var saved = localStorage.getItem("ds-theme"); if (saved) { sw.value = saved; link.href = saved; } } catch (e) {}
+      sw.addEventListener("change", function () {
+        link.href = sw.value;
+        try { localStorage.setItem("ds-theme", sw.value); } catch (e) {}
+        link.addEventListener("load", renderTokens, { once: true });
+      });
+
+      /* Swatches + spacing read the live tokens, so they follow the theme */
+      function renderTokens() {
+        var cs = getComputedStyle(document.documentElement);
+        function swatches(id, tokens) {
+          document.getElementById(id).innerHTML = tokens.map(function (t) {
+            var v = cs.getPropertyValue("--" + t[0]).trim();
+            return '<div class="swatch"><div class="swatch-color" style="background:var(--' + t[0] + ')"></div><div class="swatch-meta"><strong>' + t[1] + "</strong><code>" + v + "</code></div></div>";
+          }).join("");
+        }
+        swatches("swatches-brand", [["color-primary", "Primär"], ["color-primary-hover", "Primär Hover"], ["color-primary-subtle", "Primär hell"], ["color-text", "Text"], ["color-text-secondary", "Text sekundär"], ["color-text-muted", "Text gedämpft"], ["color-border", "Rahmen"], ["color-bg-alt", "Fläche alternativ"], ["color-surface", "Fläche"]]);
+        swatches("swatches-status", [["color-success", "Erfolg"], ["color-info", "Information"], ["color-warning", "Warnung"], ["color-danger", "Fehler"], ["color-success-bg", "Erfolg hell"], ["color-info-bg", "Info hell"], ["color-warning-bg", "Warnung hell"], ["color-danger-bg", "Fehler hell"]]);
+        document.getElementById("spacing-scale").innerHTML = [1, 2, 3, 4, 6, 8, 12, 16, 24].map(function (n) {
+          var v = cs.getPropertyValue("--space-" + n).trim();
+          return '<div><code>space-' + n + '</code><span style="width:' + v + '"></span></div>';
+        }).join("");
+      }
+      renderTokens();
+
+      /* Demos */
+      document.getElementById("demo-loading").addEventListener("click", function (e) {
+        var b = e.currentTarget;
+        DS.setLoading(b, true);
+        setTimeout(function () { DS.setLoading(b, false); DS.toast({ variant: "success", title: "Gespeichert", message: "Ihre Änderungen wurden übernommen." }); }, 1200);
+      });
+      var TOASTS = {
+        success: ["Freigabe erteilt", "Die Rechnung RE-2026-08841 ist für den Zahlungslauf vorgemerkt."],
+        info: ["Export wird erstellt", "Sie erhalten eine E-Mail, sobald die Datei bereitsteht."],
+        warning: ["Sitzung läuft ab", "Sie werden in 5 Minuten automatisch abgemeldet."],
+        danger: ["Speichern fehlgeschlagen", "Die Verbindung wurde unterbrochen. Bitte versuchen Sie es erneut."]
+      };
+      document.querySelectorAll("[data-toast]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var k = b.getAttribute("data-toast");
+          DS.toast({ variant: k, title: TOASTS[k][0], message: TOASTS[k][1] });
+        });
+      });
+      document.getElementById("confirm-delete").addEventListener("click", function () {
+        document.getElementById("modal-confirm").close();
+        DS.toast({ variant: "success", title: "Entwurf gelöscht", message: "„Angebot A-2026-1204 V2“ wurde entfernt." });
+      });
+    });
+  </script>
+</body>
+</html>

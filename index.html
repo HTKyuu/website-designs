@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vorlagen – Übersicht</title>
+  <meta name="description" content="Drei Enterprise-Landingpages auf Basis eines gemeinsamen Design Systems.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='4' fill='%2315181c'/%3E%3Cpath d='M8 8h12v12H8z' stroke='white' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@600&family=Public+Sans:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kuechen-horstmann/ds.css">
+  <style>
+    :root { --font-sans: "IBM Plex Sans", system-ui, sans-serif; --color-bg: #f6f7f9; --color-primary: #15181c; --color-primary-hover: #2a2f36; --color-primary-active: #000; }
+    .overview-head { padding: var(--space-20) 0 var(--space-12); }
+    .overview-head > .container > * + * { margin-top: var(--space-4); }
+    .template-card { overflow: hidden; }
+    .template-thumb { display: flex; flex-direction: column; justify-content: space-between; height: 180px; padding: var(--space-5); border-bottom: 1px solid var(--color-border); }
+    .template-thumb .bar { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; }
+    .template-thumb .bar i { display: inline-block; width: 20px; height: 20px; border-radius: 4px; }
+    .template-thumb .lines { display: grid; gap: 8px; }
+    .template-thumb .lines span { display: block; height: 10px; border-radius: 2px; opacity: .18; background: currentColor; }
+    .template-thumb .lines span:first-child { height: 18px; width: 70%; opacity: .85; }
+    .template-thumb .cta { display: inline-block; width: 120px; height: 28px; border-radius: 4px; }
+    .tokens { display: flex; gap: 6px; }
+    .tokens span { width: 20px; height: 20px; border-radius: 4px; border: 1px solid rgba(0,0,0,.08); }
+    .meta-list { display: grid; gap: var(--space-2); font-size: var(--fs-13); }
+    .meta-list div { display: flex; justify-content: space-between; gap: var(--space-3); }
+    .meta-list dt { color: var(--color-text-muted); }
+    .meta-list dd { font-weight: 500; text-align: right; }
+    .ds-callout { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-6); margin-top: var(--space-8); padding: var(--space-6) var(--space-8); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <main id="main">
+    <header class="overview-head">
+      <div class="container">
+        <p class="t-eyebrow">Vorlagen · Oktober 2026</p>
+        <h1 class="t-h1">Drei Landingpages, ein Design System</h1>
+        <p class="t-lead" style="max-width:720px">Jede Vorlage ist eine eigenständige Marketingseite mit eingebetteter, funktionsfähiger Produktvorschau. Alle teilen dieselben Komponenten, Abstände und Interaktionsmuster – nur die Tokens unterscheiden sich.</p>
+      </div>
+    </header>
+
+    <section class="container" aria-labelledby="templates-title" style="padding-bottom:96px">
+      <h2 class="visually-hidden" id="templates-title">Vorlagen</h2>
+      <div class="grid grid--3">
+        <article class="card template-card">
+          <div class="template-thumb" style="background:#faf9f7;color:#1c1b19;font-family:'Instrument Sans',sans-serif">
+            <div class="bar"><i style="background:#1e4a3b"></i>Küchen Horstmann</div>
+            <div class="lines"><span></span><span style="width:90%"></span><span style="width:60%"></span></div>
+            <span class="cta" style="background:#1e4a3b"></span>
+          </div>
+          <div class="card-body stack">
+            <div class="cluster cluster--between"><h3 class="t-h4">Küchen Horstmann</h3><span class="badge">B2C · Studio</span></div>
+            <p class="t-sm t-secondary">Küchenstudio mit Planung, Montage und Kundenportal. Warm, ruhig, viel Weißraum.</p>
+            <dl class="meta-list">
+              <div><dt>Schrift</dt><dd>Instrument Sans</dd></div>
+              <div><dt>Produktvorschau</dt><dd>Kundenportal mit Tabs</dd></div>
+              <div><dt>Interaktionen</dt><dd>Tabs, Modale, Terminformular</dd></div>
+            </dl>
+            <div class="tokens" aria-label="Farbpalette"><span style="background:#1e4a3b"></span><span style="background:#edf3ef"></span><span style="background:#faf9f7"></span><span style="background:#1c1b19"></span></div>
+          </div>
+          <div class="card-footer"><span class="t-caption">kuechen-horstmann/</span><a class="btn btn--primary btn--sm" href="kuechen-horstmann/index.html">Öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+        </article>
+
+        <!-- Kontora and Transvera live in templates/ (not published); cards disabled until they move back.
+        <article class="card template-card">
+          <div class="template-thumb" style="background:#f6f7f9;color:#121721;font-family:'IBM Plex Sans',sans-serif">
+            <div class="bar"><i style="background:#1b3a6b"></i>Kontora</div>
+            <div class="lines"><span></span><span style="width:90%"></span><span style="width:60%"></span></div>
+            <span class="cta" style="background:#1b3a6b"></span>
+          </div>
+          <div class="card-body stack">
+            <div class="cluster cluster--between"><h3 class="t-h4">Kontora</h3><span class="badge">B2B · SaaS</span></div>
+            <p class="t-sm t-secondary">Rechnungsfreigabe und Kreditorenautomatisierung. Dicht, korporativ, für Finanz- und IT-Entscheider.</p>
+            <dl class="meta-list">
+              <div><dt>Schrift</dt><dd>IBM Plex Sans</dd></div>
+              <div><dt>Produktvorschau</dt><dd>Rechnungstabelle</dd></div>
+              <div><dt>Interaktionen</dt><dd>Filter, Sortierung, Mehrfachauswahl</dd></div>
+            </dl>
+            <div class="tokens" aria-label="Farbpalette"><span style="background:#1b3a6b"></span><span style="background:#eef2f8"></span><span style="background:#f6f7f9"></span><span style="background:#121721"></span></div>
+          </div>
+          <div class="card-footer"><span class="t-caption">kontora/</span><a class="btn btn--primary btn--sm" href="kontora/index.html">Öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+        </article>
+
+        <article class="card template-card">
+          <div class="template-thumb" style="background:#14181f;color:#fff;font-family:'Public Sans',sans-serif">
+            <div class="bar"><i style="background:#0f5c63"></i>Transvera</div>
+            <div class="lines"><span></span><span style="width:90%"></span><span style="width:60%"></span></div>
+            <span class="cta" style="background:#ffffff"></span>
+          </div>
+          <div class="card-body stack">
+            <div class="cluster cluster--between"><h3 class="t-h4">Transvera</h3><span class="badge">B2B · Logistik</span></div>
+            <p class="t-sm t-secondary">Sendungstransparenz für globale Lieferketten. Strukturiert und operativ, mit dunkler Navigation.</p>
+            <dl class="meta-list">
+              <div><dt>Schrift</dt><dd>Public Sans</dd></div>
+              <div><dt>Produktvorschau</dt><dd>Tracking &amp; Control Tower</dd></div>
+              <div><dt>Interaktionen</dt><dd>Lade-, Leer- und Fehlerzustände</dd></div>
+            </dl>
+            <div class="tokens" aria-label="Farbpalette"><span style="background:#0f5c63"></span><span style="background:#ebf4f4"></span><span style="background:#14181f"></span><span style="background:#f5f7f8"></span></div>
+          </div>
+          <div class="card-footer"><span class="t-caption">transvera/</span><a class="btn btn--primary btn--sm" href="transvera/index.html">Öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+        </article>
+        -->
+        <article class="card template-card">
+          <div class="template-thumb" style="background:#0E0B0B;color:#F6F1EE;font-family:'Barlow Condensed',sans-serif">
+            <div class="bar"><i style="background:#A82828"></i>Autohaus Pezzei</div>
+            <div class="lines"><span></span><span style="width:90%"></span><span style="width:60%"></span></div>
+            <span class="cta" style="background:#A82828"></span>
+          </div>
+          <div class="card-body stack">
+            <div class="cluster cluster--between"><h3 class="t-h4">Autohaus Pezzei</h3><span class="badge">B2C · Autohaus</span></div>
+            <p class="t-sm t-secondary">Werkstatt, HU/AU und Gebrauchtwagen in Oberhausen. Dunkel mit Pezzei-Rot, umschaltbar auf Rot als Fläche. Eigenes Stylesheet, ohne das gemeinsame Design System.</p>
+            <dl class="meta-list">
+              <div><dt>Schrift</dt><dd>Barlow Condensed + Barlow</dd></div>
+              <div><dt>Seiten</dt><dd>Start, Leistungen, Fahrzeuge, Kontakt, Impressum, Datenschutz</dd></div>
+              <div><dt>Interaktionen</dt><dd>Farbwelt-Umschalter, Terminformular, OpenStreetMap</dd></div>
+            </dl>
+            <div class="tokens" aria-label="Farbpalette"><span style="background:#0E0B0B"></span><span style="background:#A82828"></span><span style="background:#F7F2EF"></span><span style="background:#8B1A1A"></span></div>
+          </div>
+          <div class="card-footer"><span class="t-caption">pezzei/</span><a class="btn btn--primary btn--sm" href="pezzei/index.html">Öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+        </article>
+
+        <article class="card template-card">
+          <div class="template-thumb" style="background:#170D0C;color:#F7F2F0;font-family:'Barlow Condensed',sans-serif">
+            <div class="bar"><i style="background:#DC2B1B"></i>Küchen Horstmann · dunkel</div>
+            <div class="lines"><span></span><span style="width:90%"></span><span style="width:60%"></span></div>
+            <span class="cta" style="background:#DC2B1B"></span>
+          </div>
+          <div class="card-body stack">
+            <div class="cluster cluster--between"><h3 class="t-h4">Küchen Horstmann (dunkel)</h3><span class="badge">B2C · Küchenhaus</span></div>
+            <p class="t-sm t-secondary">Echte Daten von kuechen-horstmann.com: Küchenhaus in Oberhausen-Sterkrade seit 1898. Fast schwarz mit Horstmann-Rot, Gelb als Zweitakzent. Eigenes Stylesheet aus dem Dark-Site-Skill.</p>
+            <dl class="meta-list">
+              <div><dt>Schrift</dt><dd>Barlow Condensed + Barlow</dd></div>
+              <div><dt>Seiten</dt><dd>Start, Kontakt, Jobs, Impressum, Datenschutz</dd></div>
+              <div><dt>Interaktionen</dt><dd>Terminformular, OpenStreetMap, mobiles Menü</dd></div>
+            </dl>
+            <div class="tokens" aria-label="Farbpalette"><span style="background:#170D0C"></span><span style="background:#DC2B1B"></span><span style="background:#FFD60A"></span><span style="background:#F7F2F0"></span></div>
+          </div>
+          <div class="card-footer"><span class="t-caption">kuechen-horstmann-dark/</span><a class="btn btn--primary btn--sm" href="kuechen-horstmann-dark/index.html">Öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+        </article>
+
+        <article class="card template-card">
+          <div class="template-thumb" style="background:linear-gradient(90deg,#1A1818 50%,#F5F4F4 50%);color:#F6F6F6;font-family:'Barlow Condensed',sans-serif">
+            <div class="bar"><i style="background:#C62A43"></i>C &amp; S Autoteile · hell + dunkel</div>
+            <div class="lines"><span></span><span style="width:90%"></span><span style="width:60%"></span></div>
+            <span class="cta" style="background:#C62A43"></span>
+          </div>
+          <div class="card-body stack">
+            <div class="cluster cluster--between"><h3 class="t-h4">C &amp; S Autoteile</h3><span class="badge">B2C + B2B · Autoteile</span></div>
+            <p class="t-sm t-secondary">Autoteile-Fachhandel in Oberhausen für Privatkunden und Werkstätten. Dark-Site-Skill mit Hell/Dunkel-Umschalter: Anthrazit oder Weiß, C&amp;S-Rot aus dem Logo als Akzent.</p>
+            <dl class="meta-list">
+              <div><dt>Schrift</dt><dd>Barlow Condensed + Barlow</dd></div>
+              <div><dt>Seiten</dt><dd>Start, Sortiment, Kontakt, Impressum, Datenschutz</dd></div>
+              <div><dt>Interaktionen</dt><dd>Hell/Dunkel, Teileanfrage mit HSN/TSN, OpenStreetMap</dd></div>
+            </dl>
+            <div class="tokens" aria-label="Farbpalette"><span style="background:#1A1818"></span><span style="background:#C62A43"></span><span style="background:#F5F4F4"></span><span style="background:#FFFFFF"></span></div>
+          </div>
+          <div class="card-footer"><span class="t-caption">cs-autoteile/</span><a class="btn btn--primary btn--sm" href="cs-autoteile/index.html">Öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+        </article>
+
+        <article class="card template-card">
+          <div class="template-thumb" style="background:#160B0C;color:#F7F2F2;font-family:'Barlow Condensed',sans-serif">
+            <div class="bar"><i style="background:#E2001A"></i>PTC PressEngineering</div>
+            <div class="lines"><span></span><span style="width:90%"></span><span style="width:60%"></span></div>
+            <span class="cta" style="background:#E2001A"></span>
+          </div>
+          <div class="card-body stack">
+            <div class="cluster cluster--between"><h3 class="t-h4">PTC PressEngineering</h3><span class="badge">B2B · Industrie</span></div>
+            <p class="t-sm t-secondary">Echte Daten von ptc.eu: Pressen-, Montagelinien- und Robotik-Spezialist aus Oberhausen, Teil der SCHOLPP Gruppe. 16 Seiten wie das Original, fast schwarz mit PTC-Rot. Eigenes Stylesheet aus dem Dark-Site-Skill.</p>
+            <dl class="meta-list">
+              <div><dt>Schrift</dt><dd>Barlow Condensed + Barlow</dd></div>
+              <div><dt>Seiten</dt><dd>Start, Unternehmen (5), Leistungen (4), Referenzen, Karriere, News, Kontakt, Impressum, Datenschutz</dd></div>
+              <div><dt>Interaktionen</dt><dd>Anfrageformular, OpenStreetMap, mobiles Menü, Unternavigation</dd></div>
+            </dl>
+            <div class="tokens" aria-label="Farbpalette"><span style="background:#160B0C"></span><span style="background:#E2001A"></span><span style="background:#B30014"></span><span style="background:#F7F2F2"></span></div>
+          </div>
+          <div class="card-footer"><span class="t-caption">ptc-pressengineering/</span><a class="btn btn--primary btn--sm" href="ptc-pressengineering/index.html">Öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+        </article>
+
+      </div>
+
+      <div class="card ds-callout">
+        <div>
+          <h2 class="t-h4">Komponentenreferenz</h2>
+          <p class="t-sm t-secondary mt-2">Alle Komponenten und Zustände auf einer Seite – umschaltbar zwischen den drei Themes.</p>
+        </div>
+        <a class="btn" href="design-system.html">Design System öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      </div>
+    </section>
+  </main>
+  <script src="kuechen-horstmann/ds.js"></script>
+</body>
+</html>
