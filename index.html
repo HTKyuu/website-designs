@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@600&family=Public+Sans:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="kuechen-horstmann/ds.css">
+  <link rel="stylesheet" href="shared/ds.css">
   <style>
     :root { --font-sans: "IBM Plex Sans", system-ui, sans-serif; --color-bg: #f6f7f9; --color-primary: #15181c; --color-primary-hover: #2a2f36; --color-primary-active: #000; }
     .overview-head { padding: var(--space-20) 0 var(--space-12); }
@@ -45,25 +45,6 @@
     <section class="container" aria-labelledby="templates-title" style="padding-bottom:96px">
       <h2 class="visually-hidden" id="templates-title">Vorlagen</h2>
       <div class="grid grid--3">
-        <article class="card template-card">
-          <div class="template-thumb" style="background:#faf9f7;color:#1c1b19;font-family:'Instrument Sans',sans-serif">
-            <div class="bar"><i style="background:#1e4a3b"></i>Küchen Horstmann</div>
-            <div class="lines"><span></span><span style="width:90%"></span><span style="width:60%"></span></div>
-            <span class="cta" style="background:#1e4a3b"></span>
-          </div>
-          <div class="card-body stack">
-            <div class="cluster cluster--between"><h3 class="t-h4">Küchen Horstmann</h3><span class="badge">B2C · Studio</span></div>
-            <p class="t-sm t-secondary">Küchenstudio mit Planung, Montage und Kundenportal. Warm, ruhig, viel Weißraum.</p>
-            <dl class="meta-list">
-              <div><dt>Schrift</dt><dd>Instrument Sans</dd></div>
-              <div><dt>Produktvorschau</dt><dd>Kundenportal mit Tabs</dd></div>
-              <div><dt>Interaktionen</dt><dd>Tabs, Modale, Terminformular</dd></div>
-            </dl>
-            <div class="tokens" aria-label="Farbpalette"><span style="background:#1e4a3b"></span><span style="background:#edf3ef"></span><span style="background:#faf9f7"></span><span style="background:#1c1b19"></span></div>
-          </div>
-          <div class="card-footer"><span class="t-caption">kuechen-horstmann/</span><a class="btn btn--primary btn--sm" href="kuechen-horstmann/index.html">Öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
-        </article>
-
         <!-- Kontora and Transvera live in templates/ (not published); cards disabled until they move back.
         <article class="card template-card">
           <div class="template-thumb" style="background:#f6f7f9;color:#121721;font-family:'IBM Plex Sans',sans-serif">
@@ -179,6 +160,25 @@
           <div class="card-footer"><span class="t-caption">ptc-pressengineering/</span><a class="btn btn--primary btn--sm" href="ptc-pressengineering/index.html">Öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
         </article>
 
+        <article class="card template-card">
+          <div class="template-thumb" style="background:linear-gradient(90deg,#16191D 50%,#F4F5F6 50%);color:#FFFFFF;font-family:'Public Sans',sans-serif">
+            <div class="bar"><i style="background:#FCB913"></i>Elektro Lüdtke · hell + dunkel</div>
+            <div class="lines"><span></span><span style="width:90%"></span><span style="width:60%"></span></div>
+            <span class="cta" style="background:#FCB913"></span>
+          </div>
+          <div class="card-body stack">
+            <div class="cluster cluster--between"><h3 class="t-h4">Elektro Lüdtke</h3><span class="badge">B2C + B2B · Elektro</span></div>
+            <p class="t-sm t-secondary">Elektrofachbetrieb aus Oberhausen mit 24h-Notdienst, echte Daten von elektro-luedtke.de. Transvera-Design mit Lüdtke-Gelb und Hell/Dunkel-Umschalter.</p>
+            <dl class="meta-list">
+              <div><dt>Schrift</dt><dd>Public Sans (lokal)</dd></div>
+              <div><dt>Seiten</dt><dd>Start, Leistungen (6 Bereiche), Notdienst, Kontakt, Impressum, Datenschutz</dd></div>
+              <div><dt>Interaktionen</dt><dd>Hell/Dunkel, Sprungleiste, Anfrageformular, Google Maps, mobile Anrufleiste</dd></div>
+            </dl>
+            <div class="tokens" aria-label="Farbpalette"><span style="background:#1B1E22"></span><span style="background:#FCB913"></span><span style="background:#A8A9AD"></span><span style="background:#F4F5F6"></span></div>
+          </div>
+          <div class="card-footer"><span class="t-caption">elektro-luedtke/</span><a class="btn btn--primary btn--sm" href="elektro-luedtke/index.html">Öffnen<svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+        </article>
+
       </div>
 
       <div class="card ds-callout">
@@ -190,6 +190,6 @@
       </div>
     </section>
   </main>
-  <script src="kuechen-horstmann/ds.js"></script>
+  <script src="shared/ds.js"></script>
 </body>
 </html>

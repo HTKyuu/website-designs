@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="kuechen-horstmann/ds.css">
-  <link rel="stylesheet" href="kuechen-horstmann/theme.css" id="theme-css">
+  <link rel="stylesheet" href="shared/ds.css">
+  <link rel="stylesheet" href="elektro-luedtke/assets/theme.css" id="theme-css">
   <style>
     /* Documentation layout only — not part of the design system */
     .docs { display: grid; grid-template-columns: 240px minmax(0, 1fr); min-height: calc(100vh - var(--header-height)); }
@@ -47,6 +47,9 @@
       .demo-grid { grid-template-columns: minmax(0, 1fr); }
       .type-row { grid-template-columns: minmax(0, 1fr); gap: var(--space-1); }
     }
+    .site-header .breadcrumb a, .site-header .breadcrumb [aria-current="page"] { color: var(--nav-fg, var(--color-text-muted)); }
+    .site-header .breadcrumb [aria-current="page"] { color: var(--header-fg, var(--color-text)); }
+    .site-header label { color: var(--nav-fg, var(--color-text-muted)); }
   </style>
 </head>
 <body>
@@ -55,7 +58,7 @@
   <header class="site-header">
     <div class="container header-inner" style="max-width:none">
       <a class="brand" href="index.html">
-        <svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="4" fill="var(--color-text)"/><path d="M8 8h12v12H8z" stroke="#fff" stroke-width="2.4" fill="none"/></svg>
+        <svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="4" fill="var(--color-primary)"/><path d="M8 8h12v12H8z" stroke="var(--color-on-primary)" stroke-width="2.4" fill="none"/></svg>
         Design System
       </a>
       <nav class="breadcrumb hide-md" aria-label="Brotkrumen">
@@ -64,7 +67,7 @@
       <div class="header-actions">
         <label class="t-sm t-muted hide-md" for="theme-switch">Theme</label>
         <select class="select select--sm" id="theme-switch" style="width:auto">
-          <option value="kuechen-horstmann/theme.css">Küchen Horstmann</option>
+          <option value="elektro-luedtke/assets/theme.css">Elektro Lüdtke</option>
           <!-- Kontora and Transvera live in templates/ (not published)
           <option value="kontora/theme.css">Kontora</option>
           <option value="transvera/theme.css">Transvera</option>
@@ -510,7 +513,7 @@
     </div>
   </dialog>
 
-  <script src="kuechen-horstmann/ds.js"></script>
+  <script src="shared/ds.js"></script>
   <script>
     document.addEventListener("ds:ready", function () {
       /* Theme switcher */
